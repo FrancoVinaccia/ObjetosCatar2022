@@ -1,0 +1,18 @@
+import cocineros.*
+import platos.*
+import torneos.*
+
+describe "Tests calificación de pastelero" {
+	
+	test "Un pastelero califica bien sin pasarse del máximo" {
+        const jorge = new Cocinero(especialidad = new Pastelero(dulzorDeseado = 10))
+        const postre = new Postre(cocinero = jorge, colores = 3)
+        assert.equals(10, jorge.catar(postre)) // el resultado esperado es 10 ya que es el maximo
+	}
+	
+	test "Un pastelero califica bien" {
+        const mati = new Cocinero(especialidad = new Pastelero(dulzorDeseado = 100))
+        const postre = new Postre(cocinero = mati, colores = 3)
+        assert.equals(6, mati.catar(postre)) // el resultado esperado es 6 ya que la cuenta es 5*120/100 = 6
+	}
+}
